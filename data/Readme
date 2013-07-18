@@ -1,0 +1,9 @@
+MoMo Fake Sensor Data
+---------------------
+July 17th, 2013
+
+weather_stations.csv:  geographic location of all weather stations in Ethiopia
+weather_data.csv:      3 years of weather data for the 30 stations 
+sites.csv:             10 random cities in Ethiopia
+monitors.csv:          for each city, a small (random) number of sensors around the city
+reports.csv:           water flow event data for each of the monitors
