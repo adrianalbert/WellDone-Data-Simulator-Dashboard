@@ -6,7 +6,7 @@
 # Uses DB schema in db/schema.js.
 # 
 # Adrian Albert
-# Last modified: July 2013.
+# Last modified: August 2013.
 ###########################################
 
 rm(list = ls())
@@ -38,7 +38,7 @@ weather$DateTime = as.POSIXct(as.character(weather$DateTime))
 # ---------------------------------------------
 
 # get a list of countries in Africa & cities
-country.name = c('Ethiopia', 'Eritrea', 'Somalia', 'Kenya', 'Uganda', 'Djibouti')
+country.name = c('Ethiopia', 'Eritrea', 'Somalia', 'Kenya', 'Djibouti')
 cities.all   = read.csv('./metadata/worldcities.csv')
 countries    = read.csv('./metadata/Countries.txt')
 cities.all   = merge(cities.all, subset(countries, select = c('CountryId', 'Country')), 
@@ -51,7 +51,7 @@ cities       = subset(cities.all, Country %in% country.name)
 cities       = droplevels(cities)
 
 # select a few cities at random 
-set.seed(0)
+# set.seed(0)
 site.ids = sample(1:nrow(cities), 5)
 sites    = subset(cities[site.ids,], select = c('City', 'Country', 'Lat', 'Long'))
 sites    = cbind(ID = 0:(nrow(sites)-1), sites)
@@ -78,7 +78,7 @@ monitors = list()
 for (i in 1:nrow(sites)) {  
   
   cur_site   = sites[i,]  
-  no.sensors = 1 + sample(5, 1)
+  no.sensors = 1 + sample(10, 1)
   name       = paste(cur_site$City, 'Location', 0:(no.sensors-1))
   gsm.ids    = generateRandomString(no.sensors, 20)
   sens.lat   = cur_site$Lat + (-0.5 + runif(no.sensors)) * 0.01

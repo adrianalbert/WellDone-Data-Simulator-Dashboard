@@ -48,9 +48,10 @@ monitors = monitors[,-1]
 
 # pre-load static map of data sensors
 center   = c(lon = mean(monitors[,'Lon']), lat = mean(monitors[,'Lat']))
-map.sens = get_googlemap(center = center, zoom = 6,
+map.sens = get_googlemap(center = center, zoom = 5,
                          markers = monitors[,c('Lon','Lat')],
                          maptype = 'roadmap')
+p   = ggmap(map.sens, extent = 'device')
 
 # ______________________________________
 # Weather data
@@ -59,14 +60,14 @@ load('/home/toni/Dropbox/WellDone/weather/data/d4/formatted_data.RData')
 
 stations = subset(stations, COUNTRY == 'ETHIOPIA')
 center   = c(lont = mean(stations[,'LON']), lat = mean(stations[,'LAT']))
-map.wthr = get_googlemap(center = center, zoom = 6,
+map.wthr = get_googlemap(center = center, zoom = 5,
                     markers = stations[,c('LON','LAT')],
                     maptype = 'roadmap')
                       
 # pre-load static map of sensors & weather stations
 center   = c(lon = mean(c(monitors[,'Lon'], stations[,'LON'])), 
              lat = mean(c(monitors[,'Lat'], stations[,'LAT'])))
-map.tot  = get_googlemap(center = center, zoom = 6, maptype = 'roadmap')
+map.tot  = get_googlemap(center = center, zoom = 5, maptype = 'roadmap')
 
 # ------------------------------------
 # Set up Shiny server logic
