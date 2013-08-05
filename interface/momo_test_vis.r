@@ -15,4 +15,4 @@ library('devtools')
 library('shiny')
 
 # start Shiny server
-runApp('~/Dropbox/WellDone/Test/shiny_test/shiny_rcharts/')
+runApp('~/Dropbox/WellDone/WellDone-Data-Simulator-Dashboard/interface/')

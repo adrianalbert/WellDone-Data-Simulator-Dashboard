@@ -14,8 +14,9 @@ library(shinyIncubator)
 options(RCHART_LIB = 'polycharts')
 
 # this should come from the server side
-sensor_list = list("Gereb Arso Village" = 1, "Eytay Chinu" = 2,
-                   "Mifray Derahu Village" = 3, "Letslatsso Village" = 4)
+monitors = read.csv('~/Dropbox/WellDone/WellDone-Data-Simulator-Dashboard/data/monitors.csv')
+sensor_list = as.list(monitors$ID)
+names(sensor_list) = monitors$Name
 
 # Define UI for random distribution application 
 shinyUI(pageWithSidebar(
